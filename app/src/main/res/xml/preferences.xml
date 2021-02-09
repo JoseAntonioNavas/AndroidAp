@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:app = "http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/preferenceLogin">
+        <EditTextPreference
+            app:key="id_user"
+            app:title="id_user"
+            app:useSimpleSummaryProvider="true"
+            />
+        <EditTextPreference
+            app:key="email"
+            app:title="email"
+            app:useSimpleSummaryProvider="true"
+            />
+        <EditTextPreference
+            app:key="passwd"
+            app:title="password"
+            app:useSimpleSummaryProvider="true"
+            />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

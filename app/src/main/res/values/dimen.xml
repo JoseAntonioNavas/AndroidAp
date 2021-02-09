@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="titulosPrincipales">25sp</dimen>
+
+
+    <dimen name="alturaBotones">50dp</dimen>
+    <dimen name="anchuraBotones">300dp</dimen>
+    <dimen name="alturaTxt">50dp</dimen>
+    <dimen name="anchuraTxt">300dp</dimen>
+</resources>
