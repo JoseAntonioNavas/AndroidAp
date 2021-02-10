@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.nono.concesionariocoches.R;
@@ -17,6 +18,7 @@ public class RegistrarActivity extends AppCompatActivity {
     EditText txtApellido1;
     EditText txtApellido2;
     public static Context context;
+    Button BtnRegistrarRegistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,10 @@ public class RegistrarActivity extends AppCompatActivity {
         txtNombre = findViewById(R.id.txtNombre);
         txtApellido1 = findViewById(R.id.txtApellido1Registrar);
         txtApellido2 = findViewById(R.id.txtApellido2Registrar);
+        BtnRegistrarRegistrar = findViewById(R.id.BtnRegistrarRegistrar);
+        BtnRegistrarRegistrar.setOnClickListener(v -> {
 
-
+        });
 
     }
 }
