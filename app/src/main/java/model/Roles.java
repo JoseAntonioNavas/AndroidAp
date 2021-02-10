@@ -9,6 +9,12 @@ public class Roles {
         this.id_rol = id_rol;
         this.nombre_rol = nombre_rol;
     }
+
+    public Roles(Integer id_rol) {
+        this.id_rol = id_rol;
+    }
+
+
     public Roles(String nombre_rol) {
         this.nombre_rol = nombre_rol;
     }
