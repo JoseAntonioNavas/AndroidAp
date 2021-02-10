@@ -2,8 +2,8 @@ package logic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.preference.PreferenceManager;
 
 import com.nono.concesionariocoches.R;
@@ -43,5 +43,15 @@ public class MainLogic {
         MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.notification);
         mediaPlayer.start();
 
+    }
+
+    public static Color StringtoRGB(String color){
+        Color mColor = new Color();
+
+        String[] colour = color.substring(4,color.length()-1).split(",");
+        mColor.red(Integer.parseInt(colour[0]));
+        mColor.green(Integer.parseInt(colour[1]));
+        mColor.blue(Integer.parseInt(colour[2]));
+        return mColor;
     }
 }

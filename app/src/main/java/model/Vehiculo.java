@@ -16,7 +16,9 @@ public class Vehiculo {
         this.matricula = matricula;
         this.color = color;
     }
+    public Vehiculo(){
 
+    }
     public int getId_vehiculo() {
         return id_vehiculo;
     }

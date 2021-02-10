@@ -8,4 +8,7 @@
     <dimen name="anchuraBotones">300dp</dimen>
     <dimen name="alturaTxt">50dp</dimen>
     <dimen name="anchuraTxt">300dp</dimen>
+
+    <dimen name="sizeFONT">30dp</dimen>
+    <dimen name="sizeFONTv2">16dp</dimen>
 </resources>

@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -24,38 +28,39 @@ import logic.MainLogic;
 import logic.PeticionHTTP;
 import logic.UsuarioLogic;
 import logic.VariablesGlobales;
+import logic.VehiculoLogic;
 import model.Usuario;
+import model.Vehiculo;
 import model.busquedaVehiculo;
 
 public class CatalogoVehiculosActivity extends AppCompatActivity {
+
+    private static RecyclerView listCoches;
+    private static Context context;
+    private static TextView txtmsgError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo_vehiculos);
 
-
-        getVehiculosCatalogo(new busquedaVehiculo(""));
-/*
-        ArrayList<Vehiculo> elementos;
-        if(Logica.elementos.size() > 0){
-
-            elementos = Logica.elementos;
-        }else{
-            elementos = Logica.getElements();
-        }
-
-        RecyclerView listProductos = findViewById(R.id.listProductos);
-        listProductos.setHasFixedSize(true);
+        // ReclycerView
+        listCoches = findViewById(R.id.listCochesRecycler);
+        listCoches.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        listProductos.setLayoutManager(llm);
+        listCoches.setLayoutManager(llm);
 
-        AdaptadorProducto adaptador = new AdaptadorProducto(elementos,this);
-        listProductos.setAdapter(adaptador);
-        adaptador.refrescar();
+        txtmsgError = findViewById(R.id.txtmsgError);
+        //Title
+        setTitle(R.string.catalogoCoches);
 
-*/
+        // Obtenemos los coches del catalogo
+        getVehiculosCatalogo(new busquedaVehiculo(""));
+
     }
+
+
+
     @Override public void onBackPressed() {
         moveTaskToBack(true);
     }
@@ -70,9 +75,11 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
     }
     private static class getVehiculosCatalogo_AsyncTask extends AsyncTask<String, Void, String> {
 
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            // CARGANDO...
 
         }
 
@@ -92,12 +99,22 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
 
-            System.out.println(result);
-         /*   try {
+            try {
+               List<Vehiculo> lstVehiculos = VehiculoLogic.JsonToVehiculo(result);
 
+                    if(lstVehiculos.size() == 0){
+
+                            txtmsgError.setVisibility(View.VISIBLE);
+                    }else{
+                            txtmsgError.setVisibility(View.INVISIBLE);
+                        AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context);
+                        CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
+                        adaptador.refrescar();
+                    }
             } catch (JSONException e) {
                 Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
-            }*/
+            }
+
         }
 
     }

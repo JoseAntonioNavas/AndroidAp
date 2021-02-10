@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="ColorPrincipal">#00E183</color>
-
+   <!-- <color name="ColorPrincipal">#00E183</color>-->
+    <color name="ColorPrincipal">#173840</color>
 
 </resources>

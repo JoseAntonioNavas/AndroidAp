@@ -19,6 +19,14 @@ public class Modelo {
         this.precio = precio;
     }
 
+
+    public Modelo(int id_modelo, String nombre_modelo,int potencia, float precio) {
+        this.id_modelo = id_modelo;
+        this.nombre_modelo = nombre_modelo;
+        this.potencia = potencia;
+        this.precio = precio;
+    }
+
     public int getId_modelo() {
         return id_modelo;
     }

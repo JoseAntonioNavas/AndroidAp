@@ -37,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
         logic.MainLogic.sonido(getApplicationContext());
 
 
-
+/*
         SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editorPrefs = prefs.edit();
         editorPrefs.putString("id_user", "" );
         editorPrefs.putString("email", "");
         editorPrefs.putString("passwd", "");
-        editorPrefs.apply();
-
+        editorPrefs.apply();*/
 
         // Si hay usuario en preferencias
         if(logic.MainLogic.leerPreferenciasUsuario(MainActivity.context) != ""){
