@@ -102,12 +102,10 @@ public class LoginActivity extends AppCompatActivity{
 
                     logic.MainLogic.escribirPreferenciasUsuario(Usuario,context);
 
-                    //Sonido con exito
-                    MainLogic.sonido(context);
-
                     Intent intent1 = new Intent(context,CatalogoVehiculosActivity.class);
+                    intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent1);
-                    ((LoginActivity)context).finish();
+
                 }
 
             } catch (JSONException e) {

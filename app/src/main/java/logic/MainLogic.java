@@ -2,6 +2,7 @@ package logic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.preference.PreferenceManager;
 
@@ -39,8 +40,8 @@ public class MainLogic {
     }
 
     public static void sonido(Context context){
-        SoundPool soundPool = new SoundPool.Builder().setMaxStreams(10).build();
-        int idSoundPool = soundPool.load(context, R.raw.soundlogin, 1);
-        soundPool.play(idSoundPool,1,1,1,0,1);
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.notification);
+        mediaPlayer.start();
+
     }
 }

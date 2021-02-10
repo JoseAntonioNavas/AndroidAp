@@ -16,4 +16,9 @@
     <!-- PLACEHOLDERS -->
     <string name="hintEmail">Email</string>
     <string name="hintPassword">Contraseña</string>
+    <string name="hintNick">Nombre de usuario</string>
+    <string name="hintNombre">Nombre</string>
+    <string name="hintApellido_1">Primer Apellido</string>
+    <string name="hintApellido_2">Segundo Apellido</string>
+    <string name="fieldObligatorio">*</string>
 </resources>
