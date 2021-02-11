@@ -35,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
         logic.MainLogic.sonido(getApplicationContext());
-
-
-
-
-
+        
         // Si hay usuario en preferencias
         if(logic.MainLogic.leerPreferenciasUsuario(MainActivity.context) != ""){
 
