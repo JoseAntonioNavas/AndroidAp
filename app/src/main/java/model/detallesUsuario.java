@@ -3,7 +3,7 @@ package model;
 public class detallesUsuario {
 
     private int id_detalle_usuario;
-    private int id_usuario;
+    private int id_user;
     private String nick_user;
     private int id_rol;
     private String nombre;
@@ -13,7 +13,7 @@ public class detallesUsuario {
 
     public detallesUsuario(int id_detalle_usuario, int id_usuario, String nick_user, int id_rol, String nombre, String apellido_1, String apellido_2) {
         this.id_detalle_usuario = id_detalle_usuario;
-        this.id_usuario = id_usuario;
+        this.id_user = id_usuario;
         this.nick_user = nick_user;
         this.id_rol = id_rol;
         this.nombre = nombre;
@@ -23,7 +23,7 @@ public class detallesUsuario {
 
 
     public detallesUsuario(int id_usuario, String nick_user, int id_rol, String nombre, String apellido_1, String apellido_2) {
-        this.id_usuario = id_usuario;
+        this.id_user = id_usuario;
         this.nick_user = nick_user;
         this.id_rol = id_rol;
         this.nombre = nombre;
@@ -51,11 +51,11 @@ public class detallesUsuario {
     }
 
     public int getId_usuario() {
-        return id_usuario;
+        return id_user;
     }
 
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+        this.id_user = id_usuario;
     }
 
     public String getNick_user() {
@@ -102,7 +102,7 @@ public class detallesUsuario {
     public String toString() {
         return "detallesUsuario{" +
                 "id_detalle_usuario=" + id_detalle_usuario +
-                ", id_usuario=" + id_usuario +
+                ", id_usuario=" + id_user +
                 ", nick_user='" + nick_user + '\'' +
                 ", id_rol=" + id_rol +
                 ", nombre='" + nombre + '\'' +

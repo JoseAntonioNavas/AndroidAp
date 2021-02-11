@@ -23,5 +23,9 @@
     <string name="fieldObligatorio">*</string>
     <string name="catalogoCoches">Catálogo Vehículos</string>
 
+    <string name="miPerfil">Mi Perfil</string>
+    <string name="misCompras">Mis Compras</string>
+    <string name="misVentas">Mis Ventas</string>
+    <string name="Logout">Salir</string>
     <string name="msgCatalogoVehiculos">Lo sentimos, No hay ningun vehículo en catalogo</string>
 </resources>

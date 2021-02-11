@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,13 +17,16 @@ import com.nono.concesionariocoches.R;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import logic.PeticionHTTP;
+import logic.ResponseLogic;
 import logic.UsuarioLogic;
 import logic.VariablesGlobales;
 import logic.detallesUsuarioLogic;
 import model.Usuario;
+import model.detallesUsuario;
 
 public class RegistrarActivity extends AppCompatActivity {
 
@@ -34,6 +38,7 @@ public class RegistrarActivity extends AppCompatActivity {
     EditText txtApellido2;
     public static Context context;
     Button BtnRegistrarRegistrar;
+    private static List<Object> objetosUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +56,9 @@ public class RegistrarActivity extends AppCompatActivity {
 
         BtnRegistrarRegistrar.setOnClickListener(v -> {
 
-            List<Object> lstObject = detallesUsuarioLogic.getFieldsRegistrar(txtEmail, txtPassword, txtNick, txtNombre, txtApellido1, txtApellido2);
+            objetosUsuario = detallesUsuarioLogic.getFieldsRegistrar(txtEmail, txtPassword, txtNick, txtNombre, txtApellido1, txtApellido2);
 
-            System.out.println(lstObject);
-
+            newUsuario((Usuario) objetosUsuario.get(0));
         });
 
     }
@@ -67,7 +71,7 @@ public class RegistrarActivity extends AppCompatActivity {
         Gson g = new Gson();
         String str = g.toJson(usuario);
 
-        new RegistrarActivity.newUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/usuario/login", str);
+        new RegistrarActivity.newUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/usuario/new", str);
     }
     private static class newUsuario_AsyncTask extends AsyncTask<String, Void, String> {
 
@@ -94,24 +98,88 @@ public class RegistrarActivity extends AppCompatActivity {
         public void onPostExecute(String result){
 
             try {
-                List<Usuario> Usuario = UsuarioLogic.JsonToUsuarios(result);
+                List<ResponseLogic> res = ResponseLogic.JsonToErrores(result);
 
-                if(Usuario.size() == 0){
+                if (res.get(0).getMsg().equalsIgnoreCase("OK")){
 
-                    Toast.makeText(LoginActivity.context, R.string.credenciales_no_validas, Toast.LENGTH_LONG).show();
+                    // Insertamos los demás datos de usuario
+
+                    RegistrarActivity.newDetallesUsuario((detallesUsuario) RegistrarActivity.objetosUsuario.get(1));
+
+
+
 
                 }else{
 
-                    logic.MainLogic.escribirPreferenciasUsuario(Usuario,context);
+                    Toast.makeText(RegistrarActivity.context, res.get(0).getMsg(), Toast.LENGTH_LONG).show();
+                }
+
+            } catch (JSONException e) {
+                Toast.makeText(RegistrarActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
+
+
+
+    // PETICIONES
+    public static void newDetallesUsuario(detallesUsuario du){
+        Gson g = new Gson();
+        String str = g.toJson(du);
+
+        new RegistrarActivity.newDetallesUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/detalles-usuario1/new", str);
+    }
+    private static class newDetallesUsuario_AsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTP(params,"POST");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+
+            try {
+                List<ResponseLogic> res = ResponseLogic.JsonToErrores(result);
+                System.out.println(res);
+
+                if (res.get(0).getMsg().equalsIgnoreCase("OK")){
+
+
+                    List<Usuario> u = new ArrayList<Usuario>();
+                    u.add((Usuario) RegistrarActivity.objetosUsuario.get(0));
+                    logic.MainLogic.escribirPreferenciasUsuario(u,RegistrarActivity.context);
+
 
                     Intent intent1 = new Intent(context,CatalogoVehiculosActivity.class);
                     intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent1);
 
+
+                }else{
+
+                    Toast.makeText(RegistrarActivity.context, res.get(0).getMsg(), Toast.LENGTH_LONG).show();
+
                 }
 
             } catch (JSONException e) {
-                Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
+                Toast.makeText(RegistrarActivity.context, R.string.catchError , Toast.LENGTH_LONG).show();
             }
         }
 

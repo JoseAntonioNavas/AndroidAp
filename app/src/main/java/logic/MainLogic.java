@@ -1,10 +1,16 @@
 package logic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 
 import com.nono.concesionariocoches.R;
 
@@ -54,4 +60,16 @@ public class MainLogic {
         mColor.blue(Integer.parseInt(colour[2]));
         return mColor;
     }
+
+    public static  void borrarPreferencia(Context context){
+        SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editorPrefs = prefs.edit();
+        editorPrefs.putString("id_user", "" );
+        editorPrefs.putString("email", "");
+        editorPrefs.putString("passwd", "");
+        editorPrefs.apply();
+    }
+
+
+
 }

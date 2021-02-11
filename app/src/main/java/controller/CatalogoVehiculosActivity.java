@@ -1,5 +1,6 @@
 package controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,8 +10,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.browse.MediaBrowser;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +37,16 @@ import logic.VehiculoLogic;
 import model.Usuario;
 import model.Vehiculo;
 import model.busquedaVehiculo;
+import model.detallesUsuario;
 
 public class CatalogoVehiculosActivity extends AppCompatActivity {
 
     private static RecyclerView listCoches;
     private static Context context;
     private static TextView txtmsgError;
+    private static List<detallesUsuario> lstDu;
+
+    private static Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +63,55 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         //Title
         setTitle(R.string.catalogoCoches);
 
+        //Obtenemos detalles del usurio para saber el rol
+
+
         // Obtenemos los coches del catalogo
         getVehiculosCatalogo(new busquedaVehiculo(""));
+
+
 
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal,menu);
+
+        String id_user = MainLogic.leerPreferenciasUsuario(this);
+        getDetalleUsuario(id_user,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.menu4:
+
+            break;
+
+            case R.id.menu3:
+
+                break;
+            case R.id.menu2:
+
+                break;
+            case R.id.menu1:
+                MainLogic.borrarPreferencia(this);
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+
+        }
+        return true;
+    }
 
     @Override public void onBackPressed() {
         moveTaskToBack(true);
@@ -74,6 +126,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         new CatalogoVehiculosActivity.getVehiculosCatalogo_AsyncTask().execute(VariablesGlobales.url + "/api/vehiculos/getVehiculosBBDD", str);
     }
     private static class getVehiculosCatalogo_AsyncTask extends AsyncTask<String, Void, String> {
+
 
 
         @Override
@@ -104,9 +157,9 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
 
                     if(lstVehiculos.size() == 0){
 
-                            txtmsgError.setVisibility(View.VISIBLE);
+                        txtmsgError.setVisibility(View.VISIBLE);
                     }else{
-                            txtmsgError.setVisibility(View.INVISIBLE);
+                        txtmsgError.setVisibility(View.INVISIBLE);
                         AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context);
                         CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
                         adaptador.refrescar();
@@ -114,6 +167,63 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
             }
+
+        }
+
+    }
+
+
+    // GET VEHICULO
+    public static void getDetalleUsuario(String id_user,Menu menu){
+
+        new CatalogoVehiculosActivity.getDetalleUsuario_AsyncTask(menu).execute(VariablesGlobales.url + "/api/detalles-usuarioById/"+id_user);
+    }
+    private static class getDetalleUsuario_AsyncTask extends AsyncTask<String, Void, String> {
+
+        private final Menu menu;
+
+        private getDetalleUsuario_AsyncTask(Menu menu) {
+            this.menu = menu;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // CARGANDO...
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTPGET(params);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+
+            try {
+
+                CatalogoVehiculosActivity.lstDu =  logic.detallesUsuarioLogic.JsonTodetalleUsuarios(result);
+
+
+                if(CatalogoVehiculosActivity.lstDu.get(0).getId_rol() == 1){
+                    menu.getItem(1).setVisible(false);
+                }
+
+
+            } catch (JSONException e) {
+                Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
+            }
+
+
 
         }
 
