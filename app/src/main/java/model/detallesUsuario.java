@@ -42,6 +42,7 @@ public class detallesUsuario {
 
 
 
+
     public int getId_detalle_usuario() {
         return id_detalle_usuario;
     }

@@ -216,7 +216,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
 
 
                 if(CatalogoVehiculosActivity.lstDu.get(0).getId_rol() == 1){
-                    menu.getItem(1).setVisible(false);
+                    menu.getItem(2).setVisible(false);
                 }
 
 

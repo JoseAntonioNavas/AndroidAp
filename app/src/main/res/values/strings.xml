@@ -23,6 +23,7 @@
     <string name="fieldObligatorio">*</string>
     <string name="catalogoCoches">Catálogo Vehículos</string>
 
+    <string name="hintRol_name">Rol</string>
     <string name="miPerfil">Mi Perfil</string>
     <string name="misCompras">Mis Compras</string>
     <string name="misVentas">Mis Ventas</string>

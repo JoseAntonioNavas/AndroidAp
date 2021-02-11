@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.nono.concesionariocoches.R;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
         logic.MainLogic.sonido(getApplicationContext());
-        
+
         // Si hay usuario en preferencias
         if(logic.MainLogic.leerPreferenciasUsuario(MainActivity.context) != ""){
 

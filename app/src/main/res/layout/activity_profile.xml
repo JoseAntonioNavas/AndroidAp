@@ -6,6 +6,66 @@
     android:layout_height="match_parent"
     tools:context="controller.ProfileActivity">
 
+    <TextView
+        android:id="@+id/txtNameApelido2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
+        android:layout_marginTop="16dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintApellido_2"
+        app:layout_constraintEnd_toStartOf="@+id/txtApellido2Profile"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameApelido" />
+
+    <TextView
+        android:id="@+id/txtNameApelido"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
+        android:layout_marginTop="20dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintApellido_1"
+        app:layout_constraintEnd_toStartOf="@+id/txtApellido1Profile"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameName" />
+
+    <TextView
+        android:id="@+id/txtNameName2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
+        android:layout_marginTop="20dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintNick"
+        app:layout_constraintEnd_toStartOf="@+id/txtNickProfile"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordName" />
+
+    <TextView
+        android:id="@+id/txtNameName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
+        android:layout_marginTop="20dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintNombre"
+        app:layout_constraintEnd_toStartOf="@+id/txtNombreProfile"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameName2" />
+
+    <TextView
+        android:id="@+id/txtPasswordName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/alturaBotones"
+        android:layout_marginTop="20dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintPassword"
+        app:layout_constraintEnd_toStartOf="@+id/txtPasswordProfile"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailName" />
+
     <Button
         android:id="@+id/btnBorrarProfile"
         android:layout_width="@dimen/anchuraBotones"
@@ -20,40 +80,40 @@
     <EditText
         android:id="@+id/txtApellido1Profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintApellido_1"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreProfile" />
 
     <EditText
         android:id="@+id/txtNombreProfile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintNombre"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNickProfile" />
 
     <EditText
-        android:id="@+id/txtNickProfile2"
+        android:id="@+id/txtApellido2Profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintApellido_2"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtApellido1Profile" />
 
     <ImageView
@@ -71,30 +131,28 @@
         android:id="@+id/txtEmailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/hintEmail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgFotoProfile" />
 
     <EditText
         android:id="@+id/txtPasswordProfile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/alturaTxt"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintPassword"
         android:inputType="textPassword"
         android:textColorHint="?android:attr/textColorHint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
 
     <EditText
@@ -102,22 +160,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintNick"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPasswordProfile" />
 
     <Button
         android:id="@+id/btnActualizarProfile"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="@string/Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNickProfile2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameApelido2" />
+
+    <TextView
+        android:id="@+id/txtEmailName"
+        android:layout_width="@dimen/alturaBotones"
+        android:layout_height="@dimen/alturaBotones"
+        android:layout_marginTop="24dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="@string/hintEmail"
+        app:layout_constraintEnd_toStartOf="@+id/txtEmailProfile"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgFotoProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

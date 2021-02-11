@@ -12,6 +12,7 @@ import java.util.List;
 import model.Color;
 import model.Marca;
 import model.Modelo;
+import model.Roles;
 import model.Usuario;
 import model.Vehiculo;
 import model.detallesUsuario;
@@ -79,5 +80,43 @@ public class detallesUsuarioLogic {
 
         return new detallesUsuario(id_detalle_usuario,id_user,nick_user,id_rol,nombre,apellido_1,apellido_2);
 
+
     }
+
+    public static List<Object> JsonTodetalleUsuarioObject(String response) throws JSONException {
+
+        JSONArray jsonA = new JSONArray(response);
+        JSONObject jsonO = jsonA.getJSONObject(0);
+
+        int id_detalle_usuario = jsonO.getInt("id_detalle_usuario");
+        String nick_user = jsonO.getString("nick_user");
+        String nombre = jsonO.getString("nombre");
+        String apellido_1 = jsonO.getString("apellido_1");
+        String apellido_2 = jsonO.getString("apellido_2");
+
+
+        // Usuario
+        int id_user = jsonO.getJSONObject("usuario").getInt("id_user");
+        String email = jsonO.getJSONObject("usuario").getString("email");
+        String passwd = jsonO.getJSONObject("usuario").getString("passwd");
+
+
+        //Rol
+        int id_rol = jsonO.getJSONObject("rol").getInt("id_rol");
+        String nombre_rol = jsonO.getJSONObject("rol").getString("nombre_rol");
+
+        List<Object> lstObject = new ArrayList<Object>();
+        lstObject.add(new detallesUsuario(id_detalle_usuario,id_user,  nick_user,  id_rol,nombre,apellido_1,apellido_2));
+        lstObject.add(new Usuario(id_user,email,passwd));
+        lstObject.add(new Roles(id_rol,nombre_rol));
+
+
+
+        return lstObject;
+
+
+
+    }
+
+
 }

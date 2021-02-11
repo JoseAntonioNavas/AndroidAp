@@ -1,23 +1,35 @@
 package logic;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.nono.concesionariocoches.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import controller.LoginActivity;
+import controller.MainActivity;
+import controller.ProfileActivity;
+import model.Roles;
 import model.Usuario;
+import model.detallesUsuario;
 
 public class MainLogic {
 
@@ -70,6 +82,72 @@ public class MainLogic {
         editorPrefs.apply();
     }
 
+    public static void dialogConfirm(Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("");
+        builder.setMessage("¿Estás seguro que deseas eliminar tu cuenta?");
+
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                String id_user = logic.MainLogic.leerPreferenciasUsuario(context);
+
+                deleteUsuarioById(id_user);
+
+                MainLogic.borrarPreferencia(context);
+
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+
+
+            }
+        });
+
+        builder.setNegativeButton("Cancelar", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    // GET coche
+    public static void deleteUsuarioById(String id_user){
+
+        new deleteUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/usuario/deleteById/"+id_user);
+    }
+
+    private static class deleteUsuario_AsyncTask extends AsyncTask<String, Void, String> {
+
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // CARGANDO...
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTPGET(params);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+        }
+
+
+    }
 
 
 }
