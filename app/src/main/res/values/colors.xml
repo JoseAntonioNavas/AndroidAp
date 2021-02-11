@@ -10,5 +10,6 @@
 
    <!-- <color name="ColorPrincipal">#00E183</color>-->
     <color name="ColorPrincipal">#173840</color>
+    <color name="btnBorrar">#9C0000</color>
 
 </resources>

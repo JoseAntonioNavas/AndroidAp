@@ -92,6 +92,9 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.menu4:
+                Intent intent1 = new Intent(this, ProfileActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent1);
 
             break;
 
@@ -126,8 +129,6 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         new CatalogoVehiculosActivity.getVehiculosCatalogo_AsyncTask().execute(VariablesGlobales.url + "/api/vehiculos/getVehiculosBBDD", str);
     }
     private static class getVehiculosCatalogo_AsyncTask extends AsyncTask<String, Void, String> {
-
-
 
         @Override
         protected void onPreExecute() {
@@ -173,7 +174,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
     }
 
 
-    // GET VEHICULO
+    // GET coche
     public static void getDetalleUsuario(String id_user,Menu menu){
 
         new CatalogoVehiculosActivity.getDetalleUsuario_AsyncTask(menu).execute(VariablesGlobales.url + "/api/detalles-usuarioById/"+id_user);

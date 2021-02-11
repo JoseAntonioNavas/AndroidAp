@@ -27,5 +27,7 @@
     <string name="misCompras">Mis Compras</string>
     <string name="misVentas">Mis Ventas</string>
     <string name="Logout">Salir</string>
+    <string name="Actualizar">Actualizar</string>
+    <string name="Borrar">Borrar</string>
     <string name="msgCatalogoVehiculos">Lo sentimos, No hay ningun vehículo en catalogo</string>
 </resources>

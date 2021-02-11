@@ -35,7 +35,7 @@ public class MainLogic {
 
     public static void escribirPreferenciasUsuario(List<Usuario> Usuario,Context context){
         // LOGEAMOS
-        SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(LoginActivity.context);
+        SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context);
 
         // Escribir en las preferencias
         SharedPreferences.Editor editorPrefs = prefs.edit();
