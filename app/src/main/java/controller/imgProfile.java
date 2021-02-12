@@ -1,13 +1,15 @@
 package controller;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -21,19 +23,24 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.Gson;
 import com.nono.concesionariocoches.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import logic.PeticionHTTP;
 import logic.VariablesGlobales;
+import model.profilePhoto;
 
 public class imgProfile extends AppCompatActivity {
 
     private EditText txtFilename;
 
+    private static Context context;
     private ImageView imgFoto;
     private Bitmap bitmap;
 
@@ -42,6 +49,7 @@ public class imgProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_img_profile);
 
+        context = getApplicationContext();
         txtFilename = findViewById(R.id.filename);
         imgFoto = findViewById(R.id.imgFoto);
 
@@ -49,16 +57,14 @@ public class imgProfile extends AppCompatActivity {
                 selectFromGallery()
         );
 
-        //findViewById(R.id.btnSelectFromGallery).setOnClickListener(v->selectFromGallery());
+        findViewById(R.id.btnGaleria).setOnClickListener(v->selectFromGallery());
         findViewById(R.id.btnDownload).setOnClickListener(v->downLoad());
         findViewById(R.id.btnUpload).setOnClickListener(v->upLoad());
-
-
     }
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @NonNull Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK) try {
 
@@ -84,7 +90,6 @@ public class imgProfile extends AppCompatActivity {
                 .with(getApplicationContext())
                 .load(url)
                 .apply(RequestOptions.centerCropTransform())
-
                 .into(imgFoto);
 
         Toast.makeText(getApplicationContext(), "imagen descargada", Toast.LENGTH_SHORT).show();
@@ -101,6 +106,8 @@ public class imgProfile extends AppCompatActivity {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, strUrl,
                 s-> {
+
+                    subirImagen(new profilePhoto(Integer.parseInt(logic.MainLogic.leerPreferenciasUsuario(imgProfile.context)),getStringImage(bitmap)));
                     loading.dismiss();
                     Toast.makeText(getApplicationContext(), "Subida con éxito", Toast.LENGTH_SHORT).show();
 
@@ -116,12 +123,14 @@ public class imgProfile extends AppCompatActivity {
             @Override
             public Map<String,String> getParams(){
                 Hashtable<String,String> params = new Hashtable<String,String>();
-                params.put("imgData", getStringImage(bitmap));
-                params.put("imgName",txtFilename.getText().toString());
+                params.put("fileData", getStringImage(bitmap));
+                params.put("fileName",txtFilename.getText().toString());
+
 
                 return params;
             }
         };
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
@@ -129,10 +138,51 @@ public class imgProfile extends AppCompatActivity {
 
     private String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.out.println("////////////////////////////////////////////////////////////////////////////////// "+ bmp);
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[]  imagesBytes = baos.toByteArray();
         return Base64.encodeToString(imagesBytes, Base64.DEFAULT);
+
+    }
+
+
+
+
+
+
+
+    // PETICIONES LOGIN
+    public static void subirImagen(profilePhoto img){
+        Gson g = new Gson();
+        String str = g.toJson(img);
+
+        new subirImagen_AsyncTask().execute(VariablesGlobales.url + "/api/photo", str);
+    }
+    private static class subirImagen_AsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTP(params,"POST");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+            System.out.println(result);
+        }
 
     }
 
