@@ -100,8 +100,17 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
 
             case R.id.menu3:
 
+                Intent intent2 = new Intent(this, imgProfile.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent2);
+
                 break;
             case R.id.menu2:
+
+                Intent intent3 = new Intent(this, imgProfile.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent3);
+
 
                 break;
             case R.id.menu1:
