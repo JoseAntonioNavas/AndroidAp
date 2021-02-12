@@ -107,7 +107,7 @@ public class imgProfile extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, strUrl,
                 s-> {
 
-                    subirImagen(new profilePhoto(Integer.parseInt(logic.MainLogic.leerPreferenciasUsuario(imgProfile.context)),getStringImage(bitmap)));
+                    //subirImagen(new profilePhoto(Integer.parseInt(logic.MainLogic.leerPreferenciasUsuario(imgProfile.context)),getStringImage(bitmap)));
                     loading.dismiss();
                     Toast.makeText(getApplicationContext(), "Subida con éxito", Toast.LENGTH_SHORT).show();
 
@@ -124,13 +124,12 @@ public class imgProfile extends AppCompatActivity {
             public Map<String,String> getParams(){
                 Hashtable<String,String> params = new Hashtable<String,String>();
                 params.put("fileData", getStringImage(bitmap));
-                params.put("fileName",txtFilename.getText().toString());
+                params.put("id_user",logic.MainLogic.leerPreferenciasUsuario(imgProfile.context));
 
 
                 return params;
             }
         };
-
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
