@@ -3,6 +3,7 @@ package controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.ActionMode;
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static EditText txtApellido2Profile;
     private static Button btnActualizarProfile;
     private static Button btnBorrarProfile;
+    private static Button btnVerFotoPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtApellido2Profile = findViewById(R.id.txtApellido2Profile);
         btnActualizarProfile = findViewById(R.id.btnActualizarProfile);
         btnBorrarProfile = findViewById(R.id.btnBorrarProfile);
+        btnVerFotoPerfil = findViewById(R.id.btnVerFotoPerfil);
 
         // get datos perfil
         getDetalleUsuario(logic.MainLogic.leerPreferenciasUsuario(context));
@@ -70,11 +73,17 @@ public class ProfileActivity extends AppCompatActivity {
             logic.MainLogic.dialogConfirm(this);
         });
 
+        btnVerFotoPerfil.setOnClickListener(v ->{
+            Intent intent3 = new Intent(this, imgProfile.class);
+            intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent3);
+
+        });
 
     }
 
 
-    // GET coche
+
     public static void getDetalleUsuario(String id_user){
 
         new ProfileActivity.getDetalleUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/detalles-usuarioById/"+id_user);

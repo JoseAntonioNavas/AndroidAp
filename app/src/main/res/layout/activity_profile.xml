@@ -116,30 +116,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtApellido1Profile" />
 
-    <ImageView
-        android:id="@+id/imgFotoProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <EditText
         android:id="@+id/txtEmailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:enabled="false"
         android:hint="@string/hintEmail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFotoProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
 
     <EditText
         android:id="@+id/txtPasswordProfile"
@@ -183,12 +172,23 @@
         android:id="@+id/txtEmailName"
         android:layout_width="@dimen/alturaBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:text="@string/hintEmail"
         app:layout_constraintEnd_toStartOf="@+id/txtEmailProfile"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFotoProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
+
+    <Button
+        android:id="@+id/btnVerFotoPerfil"
+        android:layout_width="@dimen/anchuraBotones"
+        android:layout_height="@dimen/alturaBotones"
+        android:layout_marginTop="40dp"
+        android:text="@string/btnimgProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

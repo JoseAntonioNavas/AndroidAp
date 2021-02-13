@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -48,15 +49,8 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
         holder.txtPotencia.setText(String.valueOf(vehiculos.get(position).getModelo().getPotencia() + "kW"));
         holder.txtMatricula.setText(String.valueOf(vehiculos.get(position).getMatricula()));
         holder.txtColor.setText(String.valueOf(vehiculos.get(position).getColor().getNombre_color()));
-
-
-        holder.cardCoche.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /* Intent i = new Intent(context, EditarProducto.class);
-                i.putExtra("posicion", "" + position);
-                context.startActivity(i);*/
-            }
+        holder.btnAddCesta.setOnClickListener(v ->{
+           
         });
 
     }
@@ -80,7 +74,7 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
         TextView txtMatricula;
         TextView txtColor;
         TextView txtPotencia;
-
+        Button btnAddCesta;
         ImageView imgCoche;
 
         public HolderCoche(@NonNull View itemView) {
@@ -93,7 +87,7 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
             txtColor = itemView.findViewById(R.id.txtColor);
             txtPotencia = itemView.findViewById(R.id.txtPotenciaC);
             imgCoche = itemView.findViewById(R.id.imgCoche);
-
+            btnAddCesta = itemView.findViewById(R.id.btnAddCesta);
 
         }
     }

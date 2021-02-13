@@ -25,10 +25,20 @@
 
     <string name="hintRol_name">Rol</string>
     <string name="miPerfil">Mi Perfil</string>
-    <string name="misCompras">Mis Compras</string>
+    <string name="misCompras">Mi Carrito</string>
     <string name="misVentas">Mis Ventas</string>
     <string name="Logout">Salir</string>
     <string name="Actualizar">Actualizar</string>
     <string name="Borrar">Borrar</string>
+    <string name="Galeria">Galeria</string>
+    <string name="upload">Subir imagen</string>
+    <string name="btnimgProfile">Gestionar Imagen Perfil</string>
+    <string name="deleteImage">¿Quieres borrar la foto de perfil?</string>
     <string name="msgCatalogoVehiculos">Lo sentimos, No hay ningun vehículo en catalogo</string>
+    <string name="btnAceptar">Aceptar</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="comprar">Añadir a cesta</string>
+    <string name="title_activity_cesta">cestaActivity</string>
+
+    <string name="titleCesta">Carrito</string>
 </resources>
