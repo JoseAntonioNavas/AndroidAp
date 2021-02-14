@@ -29,4 +29,6 @@
     <dimen name="dim96">96dp</dimen>
     <dimen name="dim20">20dp</dimen>
     <dimen name="dim40">40dp</dimen>
+    <dimen name="dim358">358dp</dimen>
+    <dimen name="dim136FormLogin">136dp</dimen>
 </resources>

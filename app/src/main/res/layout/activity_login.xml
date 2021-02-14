@@ -10,11 +10,10 @@
         android:id="@+id/btnRegistrar_LoginActivity"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dim40"
         android:backgroundTint="@color/ColorPrincipal"
         android:text="@string/sinAccount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogIn_LoginActivity" />
 
@@ -22,13 +21,13 @@
         android:id="@+id/txtPassword"
         android:layout_width="@dimen/anchuraTxt"
         android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="@dimen/dim40"
+        android:autofillHints="@string/hintPassword"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintPassword"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
@@ -36,13 +35,13 @@
         android:id="@+id/txtEmail"
         android:layout_width="@dimen/anchuraTxt"
         android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="@dimen/dim136FormLogin"
+        android:autofillHints="@string/hintEmail"
         android:backgroundTint="@color/ColorPrincipal"
         android:ems="10"
         android:hint="@string/hintEmail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,11 +49,11 @@
         android:id="@+id/btnLogIn_LoginActivity"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="@dimen/dim96"
+        android:autofillHints="@string/hintIniciaSesion"
         android:backgroundTint="@color/ColorPrincipal"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

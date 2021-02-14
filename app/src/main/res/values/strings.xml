@@ -46,4 +46,5 @@
     <string name="hintPassword">Contraseña</string>
     <string name="credenciales_no_validas">Credenciales no válidas</string>
     <string name="logOutConfirm">Are you sure you want to go out?</string>
+    <string name="hintIniciaSesion">Inicia Sesión</string>
 </resources>

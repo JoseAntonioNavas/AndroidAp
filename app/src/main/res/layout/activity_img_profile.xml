@@ -10,20 +10,19 @@
         android:id="@+id/btnUpload"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/dim20"
         android:text="@string/upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGaleria" />
 
     <ImageView
         android:id="@+id/imgFoto"
         android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="358dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="@dimen/dim358"
+        android:layout_marginTop="@dimen/dim52"
+        android:contentDescription="@string/ContentImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic" />
@@ -32,10 +31,9 @@
         android:id="@+id/btnGaleria"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="@dimen/dim40"
         android:text="@string/Galeria"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgFoto" />
 
@@ -43,13 +41,10 @@
         android:id="@+id/btnBorrarFotoPerfil"
         android:layout_width="@dimen/anchuraBotones"
         android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/dim20"
         android:backgroundTint="@color/btnBorrar"
         android:text="@string/Borrar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUpload"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
 </androidx.constraintlayout.widget.ConstraintLayout>
