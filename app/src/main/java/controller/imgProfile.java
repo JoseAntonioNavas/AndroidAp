@@ -174,7 +174,7 @@ public class imgProfile extends AppCompatActivity {
                     Glide
                             .with(imgProfile.context)
                             .load(url)
-                            .apply(RequestOptions.centerCropTransform())
+                            .apply(RequestOptions.circleCropTransform())
                             .into(imgFoto);
 
                 }else{

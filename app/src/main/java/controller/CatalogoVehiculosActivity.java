@@ -121,11 +121,15 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
 
                 break;
             case R.id.menu1:
+
+                logic.MainLogic.dialogConfirmLogOut(CatalogoVehiculosActivity.this);
+
+                /*
                 MainLogic.borrarPreferencia(this);
 
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                startActivity(intent);*/
                 break;
 
         }

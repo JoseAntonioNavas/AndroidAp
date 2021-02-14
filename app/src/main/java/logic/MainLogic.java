@@ -9,27 +9,16 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 
 import com.nono.concesionariocoches.R;
-
-import org.json.JSONException;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import controller.LoginActivity;
 import controller.MainActivity;
-import controller.ProfileActivity;
-import model.Roles;
+
 import model.Usuario;
-import model.detallesUsuario;
+
 
 public class MainLogic {
 
@@ -106,6 +95,29 @@ public class MainLogic {
         });
 
         builder.setNegativeButton("Cancelar", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    public static void dialogConfirmLogOut(Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("");
+        builder.setMessage(R.string.logOutConfirm);
+
+        builder.setPositiveButton(R.string.btnAceptar, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                String id_user = logic.MainLogic.leerPreferenciasUsuario(context);
+                MainLogic.borrarPreferencia(context);
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
+            }
+        });
+
+        builder.setNegativeButton(R.string.btnCancelar, null);
         AlertDialog dialog = builder.create();
         dialog.show();
 
