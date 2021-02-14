@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ConcesionarioCoches</string>
+    <string name="preferenceLogin">PreferencesLogin</string>
+    <string name="titleMainActivity">JoCars</string>
+    <string name="welcomeMain">Sign up or access your account. Fast and easy!</string>
+    <string name="sinAccount">No account? Sign up</string>
+    <string name="Registrar">Register</string>
+    <string name="login">Log in</string>
+</resources>

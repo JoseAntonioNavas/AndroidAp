@@ -9,6 +9,24 @@
     <dimen name="alturaTxt">50dp</dimen>
     <dimen name="anchuraTxt">300dp</dimen>
 
-    <dimen name="sizeFONT">30dp</dimen>
-    <dimen name="sizeFONTv2">16dp</dimen>
+    <dimen name="sizeFONT">30sp</dimen>
+    <dimen name="sizeFONTv2">16sp</dimen>
+
+    <dimen name="dim244">244dp</dimen>
+    <dimen name="dim52">52dp</dimen>
+
+    <dimen name="alturaTituloMain">94dp</dimen>
+    <dimen name="anchuraTituloMain">222dp</dimen>
+
+    <dimen name="dim10">10dp</dimen>
+    <dimen name="iconpadding">8dp</dimen>
+    <dimen name="layoutWeigt">1</dimen>
+    <dimen name="dimen38">38dp</dimen>
+
+    <dimen name="alturaAsterisco">31dp</dimen>
+    <dimen name="anchuraAsterisco">28dp</dimen>
+
+    <dimen name="dim96">96dp</dimen>
+    <dimen name="dim20">20dp</dimen>
+    <dimen name="dim40">40dp</dimen>
 </resources>

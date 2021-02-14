@@ -11,9 +11,9 @@
         android:id="@+id/cardCoche"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="@dimen/dim10"
+        android:layout_marginVertical="@dimen/dim10"
+        android:layout_marginBottom="@dimen/dim10"
         app:cardBackgroundColor="@color/white">
 
         <LinearLayout
@@ -25,7 +25,8 @@
                 android:id="@+id/imgCoche"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fondopri" />
+                android:background="@drawable/fondopri"
+                android:contentDescription="@string/ContentImage" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,26 +45,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/comprar"
-                    app:iconPadding="8dp" />
+                    app:iconPadding="@dimen/iconpadding" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/txtMarcayModelo"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/alturaBotones"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:textSize="@dimen/sizeFONT" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="@dimen/dimen38"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtMatricula"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="@dimen/layoutWeigt"
                     android:gravity="center|center_horizontal|center_vertical"
                     android:textSize="@dimen/sizeFONTv2" />
 
@@ -71,7 +72,7 @@
                     android:id="@+id/txtPotenciaC"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="@dimen/layoutWeigt"
                     android:gravity="center|center_horizontal|center_vertical"
                     android:textSize="@dimen/sizeFONTv2" />
 
@@ -79,7 +80,7 @@
                     android:id="@+id/txtColor"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="@dimen/layoutWeigt"
                     android:gravity="center|center_horizontal|center_vertical"
                     android:textSize="@dimen/sizeFONTv2" />
 

@@ -1,21 +1,17 @@
 <resources>
     <string name="app_name">ConcesionarioCoches</string>
     <string name="preferenceLogin">>PreferencesLogin</string>
-    <string name="titleMainActivity">JoCars</string>
     <string name="welcomeMain">Regístrate o accede a tu cuenta. ¡Fácil y rápido!</string>
 
     <string name="sinAccount">¿Sin cuenta? Regístrate</string>
-    <string name="login">Inicia Sesión</string>
     <string name="Registrar">Registrar</string>
 
 
     <!-- MENSAJE ERRORES -->
-    <string name="credenciales_no_validas">Credenciales no válidas</string>
     <string name="catchError">Lo sentimos. Hubo un error :(</string>
 
     <!-- PLACEHOLDERS -->
     <string name="hintEmail">Email</string>
-    <string name="hintPassword">Contraseña</string>
     <string name="hintNick">Nombre de usuario</string>
     <string name="hintNombre">Nombre</string>
     <string name="hintApellido_1">Primer Apellido</string>
@@ -44,4 +40,9 @@
     <string name="cestaVacia">No hay ningun elemento en la cesta</string>
     <string name="btnBorrardeCesta">Eliminar de Cesta</string>
     <string name="updateProfileSuccessful">Perfil actualizado correctamente</string>
+    <string name="ContentImage">Imagen</string>
+    <string name="titleMainActivity">JoCars</string>
+    <string name="login">Inicia Sesión</string>
+    <string name="credenciales_no_validas">Credenciales no válidas</string>
+    <string name="hintPassword">Contraseña</string>
 </resources>
