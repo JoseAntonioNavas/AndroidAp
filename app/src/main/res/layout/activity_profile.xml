@@ -191,4 +191,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Switch
+        android:id="@+id/switchVerPassword"
+        android:layout_width="46dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Switch"
+        app:layout_constraintEnd_toStartOf="@+id/txtPasswordProfile"
+        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintStart_toEndOf="@+id/txtPasswordName"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

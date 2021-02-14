@@ -50,8 +50,9 @@ public class VehiculoLogic {
         String nombre_color = jsonO.getJSONObject("color").getString("nombre_color");
         String rgbcolor = jsonO.getJSONObject("color").getString("rgbcolor");
 
+        String fileData = jsonO.getString("fileData");
 
-        return new Vehiculo(id_vehiculo,new Marca(id_marca,nombre_marca),new Modelo(id_modelo,nombre_modelo,potencia,precio),matricula,new Color(id_color,nombre_color,rgbcolor));
+        return new Vehiculo(id_vehiculo,new Marca(id_marca,nombre_marca),new Modelo(id_modelo,nombre_modelo,potencia,precio),matricula,new Color(id_color,nombre_color,rgbcolor),fileData);
 
     }
 

@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -28,26 +32,36 @@ import model.busquedaVehiculo;
 public class cestaActivity extends AppCompatActivity {
 
     private static Context context;
-    RecyclerView listCesta;
+    private static RecyclerView listCesta;
+    private static TextView txtmsgCesta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta_activity);
 
+
+        context = getApplicationContext();
+        txtmsgCesta = findViewById(R.id.txtmsgCesta);
         // ReclycerView
         listCesta = findViewById(R.id.cestaRecyclerView);
         listCesta.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         listCesta.setLayoutManager(llm);
-        context = getApplicationContext();
-
         setTitle(R.string.titleCesta);
-        //
+
+        getCesta();
+
     }
 
 
+    @Override public void onBackPressed() {
 
 
+        Intent intent1 = new Intent(context,CatalogoVehiculosActivity.class);
+        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent1);
+
+    }
     // GET VEHICULO
     public static void getCesta(){
         String id_user = logic.MainLogic.leerPreferenciasUsuario(cestaActivity.context);
@@ -78,23 +92,22 @@ public class cestaActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
 
-            System.out.println("XDDDDDDDDDDDDDDD" +result);
-            /*
             try {
                 List<Vehiculo> lstVehiculos = VehiculoLogic.JsonToVehiculo(result);
 
                 if(lstVehiculos.size() == 0){
 
-                    txtmsgError.setVisibility(View.VISIBLE);
+                    txtmsgCesta.setVisibility(View.VISIBLE);
+
                 }else{
-                    txtmsgError.setVisibility(View.INVISIBLE);
-                    AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context);
-                    CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
+                    txtmsgCesta.setVisibility(View.INVISIBLE);
+                    AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context,"Cesta");
+                    listCesta.setAdapter(adaptador);
                     adaptador.refrescar();
                 }
             } catch (JSONException e) {
                 Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
-            }*/
+            }
 
         }
 

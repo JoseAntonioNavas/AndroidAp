@@ -41,4 +41,7 @@
     <string name="title_activity_cesta">cestaActivity</string>
 
     <string name="titleCesta">Carrito</string>
+    <string name="cestaVacia">No hay ningun elemento en la cesta</string>
+    <string name="btnBorrardeCesta">Eliminar de Cesta</string>
+    <string name="updateProfileSuccessful">Perfil actualizado correctamente</string>
 </resources>

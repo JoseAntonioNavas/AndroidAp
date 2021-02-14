@@ -1,7 +1,11 @@
 package controller;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,26 +13,39 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.nono.concesionariocoches.R;
 
-import java.util.ArrayList;
+import org.json.JSONException;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import logic.PeticionHTTP;
+import logic.VariablesGlobales;
+import logic.VehiculoLogic;
 import model.Vehiculo;
 
 public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCoche>{
 
-    private final ArrayList<Vehiculo> vehiculos;
+    private static ArrayList<Vehiculo> vehiculos;
     public static Context context;
+    public static String nameClass;
 
-    public AdaptadorCoche(ArrayList<Vehiculo> vehiculos, Context context) {
+
+    public AdaptadorCoche(ArrayList<Vehiculo> vehiculos, Context context,String nameClass) {
 
         this.vehiculos = vehiculos;
         this.context =  context;
+        this.nameClass = nameClass;
     }
 
     @NonNull
@@ -40,7 +57,13 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorCoche.HolderCoche holder, int position) {
-
+        // Imagen
+        String url= VariablesGlobales.url+"/images/"+vehiculos.get(position).getFileData()+".jpg";
+        Glide
+                .with(AdaptadorCoche.context)
+                .load(url)
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.imgCoche);
 
         holder.txtPrecio.setText( String.valueOf(vehiculos.get(position).getModelo().getPrecio()) + " €");
         holder.txtMarcayModelo.setText(String.valueOf(vehiculos.get(position).getMarca().getNombre_marca()
@@ -50,8 +73,19 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
         holder.txtMatricula.setText(String.valueOf(vehiculos.get(position).getMatricula()));
         holder.txtColor.setText(String.valueOf(vehiculos.get(position).getColor().getNombre_color()));
         holder.btnAddCesta.setOnClickListener(v ->{
-           
+
+            if(this.nameClass.equals("Catalogo")){
+
+                añadirCarrito(String.valueOf(vehiculos.get(position).getId_vehiculo()));
+
+            }else{
+
+                borrarCarrito(String.valueOf(vehiculos.get(position).getId_vehiculo()),holder);
+
+            }
         });
+
+
 
     }
 
@@ -89,8 +123,116 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
             imgCoche = itemView.findViewById(R.id.imgCoche);
             btnAddCesta = itemView.findViewById(R.id.btnAddCesta);
 
+            if(AdaptadorCoche.nameClass.equals("Catalogo")){
+
+
+            }else{
+
+                btnAddCesta.setBackgroundColor(context.getColor(R.color.btnBorrar));
+                btnAddCesta.setText(R.string.btnBorrardeCesta);
+
+            }
+
         }
     }
 
+
+
+    // Añadir carrito
+
+    public static void añadirCarrito(String id_vehiculo){
+        String id_user = logic.MainLogic.leerPreferenciasUsuario(AdaptadorCoche.context);
+        new addCarrito_AsyncTask().execute(VariablesGlobales.url + "/api/newCompraVehiculo/"+id_vehiculo+"/"+id_user);
+    }
+    private static class addCarrito_AsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // CARGANDO...
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTPGET(params);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+            if(result.equals("OK")){
+
+                Intent intent1 = new Intent(context,CatalogoVehiculosActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent1);
+
+            }else{
+                Toast.makeText(LoginActivity.context, result, Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
+
+
+
+    // GET VEHICULO
+    public static void borrarCarrito(String id_vehiculo,AdaptadorCoche.HolderCoche holder){
+
+        new deteleCarritoByIdVehiculo_AsyncTask(holder).execute(VariablesGlobales.url + "/api/compraVehiculo/deleteByIdVehiculo/"+ id_vehiculo);
+    }
+    private static class deteleCarritoByIdVehiculo_AsyncTask extends AsyncTask<String, Void, String> {
+
+        private AdaptadorCoche.HolderCoche holder;
+        public deteleCarritoByIdVehiculo_AsyncTask(HolderCoche holder) {
+
+            this.holder = holder;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // CARGANDO...
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTPGET(params);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+            if(result.equals("OK")){
+
+                Intent intent1 = new Intent(context,cestaActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent1);
+
+            }else{
+                Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
 
 }

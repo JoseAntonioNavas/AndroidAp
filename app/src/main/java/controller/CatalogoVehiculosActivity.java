@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,6 +55,8 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_catalogo_vehiculos);
 
         // ReclycerView
+        context = getApplicationContext();
+
         listCoches = findViewById(R.id.listCochesRecycler);
         listCoches.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -63,14 +66,18 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         //Title
         setTitle(R.string.catalogoCoches);
 
-        //Obtenemos detalles del usurio para saber el rol
-
 
         // Obtenemos los coches del catalogo
         getVehiculosCatalogo(new busquedaVehiculo(""));
 
 
 
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        getVehiculosCatalogo(new busquedaVehiculo(""));
     }
 
 
@@ -150,12 +157,14 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String result= null;
 
+
             try {
+
                 result =  PeticionHTTP.peticionHTTP(params,"POST");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             return result;
         }
 
@@ -163,6 +172,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         public void onPostExecute(String result){
 
             try {
+
                List<Vehiculo> lstVehiculos = VehiculoLogic.JsonToVehiculo(result);
 
                     if(lstVehiculos.size() == 0){
@@ -170,7 +180,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
                         txtmsgError.setVisibility(View.VISIBLE);
                     }else{
                         txtmsgError.setVisibility(View.INVISIBLE);
-                        AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context);
+                        AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context,"Catalogo");
                         CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
                         adaptador.refrescar();
                     }
@@ -222,7 +232,6 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
             try {
 
                 CatalogoVehiculosActivity.lstDu =  logic.detallesUsuarioLogic.JsonTodetalleUsuarios(result);
-
 
                 if(CatalogoVehiculosActivity.lstDu.get(0).getId_rol() == 1){
                     menu.getItem(2).setVisible(false);

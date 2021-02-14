@@ -7,7 +7,7 @@ public class Vehiculo {
     private Modelo modelo;
     private String matricula;
     private model.Color color;
-
+    private String fileData;
 
     public Vehiculo(int id_vehiculo, Marca marca, Modelo modelo, String matricula, Color color) {
         this.id_vehiculo = id_vehiculo;
@@ -16,9 +16,23 @@ public class Vehiculo {
         this.matricula = matricula;
         this.color = color;
     }
-    public Vehiculo(){
-
+    public Vehiculo(int id_vehiculo, Marca marca, Modelo modelo, String matricula, Color color,String fileData) {
+        this.id_vehiculo = id_vehiculo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.matricula = matricula;
+        this.color = color;
+        this.fileData = fileData;
     }
+
+    public String getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(String fileData) {
+        this.fileData = fileData;
+    }
+
     public int getId_vehiculo() {
         return id_vehiculo;
     }
