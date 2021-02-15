@@ -38,6 +38,6 @@
     <string name="hintNombre">Nombre</string>
     <string name="hintApellido_1">Surname</string>
     <string name="hintApellido_2">"Second surname "</string>
-    <string name="logOutConfirm">a</string>
+    <string name="logOutConfirm">Are you sure you want to go out?</string>
     <string name="hintIniciaSesion">Log Out</string>
 </resources>
