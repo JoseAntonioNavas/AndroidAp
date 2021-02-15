@@ -108,7 +108,6 @@ public class MainLogic {
         builder.setPositiveButton(R.string.btnAceptar, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
-                String id_user = logic.MainLogic.leerPreferenciasUsuario(context);
                 MainLogic.borrarPreferencia(context);
                 Intent intent = new Intent(context, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

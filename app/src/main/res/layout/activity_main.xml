@@ -7,41 +7,43 @@
     android:background="@drawable/fondopri">
 
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="@dimen/anchuraTituloMain"
-        android:layout_height="@dimen/alturaTituloMain"
-        android:layout_marginTop="@dimen/dim52"
-        android:gravity="center"
-        android:text="@string/welcomeMain"
-        android:textColor="@color/white"
-        android:textSize="@dimen/titulosPrincipales"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="@dimen/dim244"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:text="@string/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="@dimen/anchuraTituloMain"
+                android:layout_height="@dimen/alturaTituloMain"
+                android:layout_marginTop="@dimen/dim52"
+                android:gravity="center"
+                android:text="@string/welcomeMain"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titulosPrincipales" />
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="@dimen/dim52"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:text="@string/Registrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim244"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:text="@string/login" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim52"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:text="@string/Registrar" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

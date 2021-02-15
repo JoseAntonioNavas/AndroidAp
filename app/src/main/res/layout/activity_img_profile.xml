@@ -6,45 +6,48 @@
     android:layout_height="match_parent"
     tools:context="controller.imgProfile">
 
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="@dimen/dim20"
-        android:text="@string/upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGaleria" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imgFoto"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/dim358"
-        android:layout_marginTop="@dimen/dim52"
-        android:contentDescription="@string/ContentImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
 
-    <Button
-        android:id="@+id/btnGaleria"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="@dimen/dim40"
-        android:text="@string/Galeria"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFoto" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnBorrarFotoPerfil"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="@dimen/dim20"
-        android:backgroundTint="@color/btnBorrar"
-        android:text="@string/Borrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
+            <ImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/dim358"
+                android:layout_marginTop="@dimen/dim52"
+                android:contentDescription="@string/ContentImage"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/upload" />
+
+            <Button
+                android:id="@+id/btnBorrarFotoPerfil"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/btnBorrar"
+                android:text="@string/Borrar" />
+
+            <Button
+                android:id="@+id/btnGaleria"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/Galeria" />
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

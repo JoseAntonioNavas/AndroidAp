@@ -45,6 +45,7 @@ public class RegistrarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
+        setTitle(R.string.Registrar);
         context = getApplicationContext();
         txtEmail = findViewById(R.id.txtEmailRegistrar);
         txtPassword = findViewById(R.id.txtPasswordRegistrar);
