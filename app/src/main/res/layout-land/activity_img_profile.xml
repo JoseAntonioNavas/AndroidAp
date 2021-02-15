@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="controller.imgProfile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/dim358"
+                android:layout_marginTop="@dimen/dim52"
+                android:contentDescription="@string/ContentImage"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/upload" />
+
+            <Button
+                android:id="@+id/btnBorrarFotoPerfil"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/btnBorrar"
+                android:text="@string/Borrar" />
+
+            <Button
+                android:id="@+id/btnGaleria"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/Galeria" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
