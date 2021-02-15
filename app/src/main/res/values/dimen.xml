@@ -31,4 +31,6 @@
     <dimen name="dim40">40dp</dimen>
     <dimen name="dim358">358dp</dimen>
     <dimen name="dim136FormLogin">136dp</dimen>
+    <dimen name="dim36">36dp</dimen>
+    <dimen name="layoytConstraitnProfile">0.865</dimen>
 </resources>

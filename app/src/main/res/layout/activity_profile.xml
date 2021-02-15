@@ -6,200 +6,200 @@
     android:layout_height="match_parent"
     tools:context="controller.ProfileActivity">
 
-    <TextView
-        android:id="@+id/txtNameApelido2"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="16dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintApellido_2"
-        app:layout_constraintEnd_toStartOf="@+id/txtApellido2Profile"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameApelido" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtNameApelido"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintApellido_1"
-        app:layout_constraintEnd_toStartOf="@+id/txtApellido1Profile"
-        app:layout_constraintHorizontal_bias="0.282"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameName" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtNameName2"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintNick"
-        app:layout_constraintEnd_toStartOf="@+id/txtNickProfile"
-        app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordName" />
+            <TextView
+                android:id="@+id/txtPasswordName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailName" />
 
-    <TextView
-        android:id="@+id/txtNameName"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintNombre"
-        app:layout_constraintEnd_toStartOf="@+id/txtNombreProfile"
-        app:layout_constraintHorizontal_bias="0.178"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameName2" />
+            <TextView
+                android:id="@+id/txtNameName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintNombre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameName2" />
 
-    <TextView
-        android:id="@+id/txtPasswordName"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="20dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintPassword"
-        app:layout_constraintEnd_toStartOf="@+id/txtPasswordProfile"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailName" />
+            <TextView
+                android:id="@+id/txtNameName2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintNick"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPasswordName" />
 
-    <Button
-        android:id="@+id/btnBorrarProfile"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/btnBorrar"
-        android:text="@string/Borrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnActualizarProfile" />
+            <EditText
+                android:id="@+id/txtApellido2Profile"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:hint="@string/hintApellido_2"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtApellido1Profile" />
 
-    <EditText
-        android:id="@+id/txtApellido1Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:hint="@string/hintApellido_1"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreProfile" />
+            <TextView
+                android:id="@+id/txtEmailName"
+                android:layout_width="@dimen/alturaBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim36"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
 
-    <EditText
-        android:id="@+id/txtNombreProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:hint="@string/hintNombre"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNickProfile" />
+            <TextView
+                android:id="@+id/txtNameApelido"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintApellido_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameName" />
 
-    <EditText
-        android:id="@+id/txtApellido2Profile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:hint="@string/hintApellido_2"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtApellido1Profile" />
+            <Switch
+                android:id="@+id/switchVerPassword"
+                android:layout_width="46dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="@dimen/dim36"
+                android:text="Switch"
+                app:layout_constraintEnd_toStartOf="@+id/txtPasswordProfile"
+                app:layout_constraintStart_toEndOf="@+id/txtPasswordName"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
 
-    <EditText
-        android:id="@+id/txtEmailProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="@string/hintEmail"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
+            <TextView
+                android:id="@+id/txtNameApelido2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:text="@string/hintApellido_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameApelido" />
 
-    <EditText
-        android:id="@+id/txtPasswordProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/alturaTxt"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:hint="@string/hintPassword"
-        android:inputType="textPassword"
-        android:textColorHint="?android:attr/textColorHint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
+            <EditText
+                android:id="@+id/txtEmailProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/hintEmail"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.92"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
 
-    <EditText
-        android:id="@+id/txtNickProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="@color/ColorPrincipal"
-        android:ems="10"
-        android:hint="@string/hintNick"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordProfile" />
+            <EditText
+                android:id="@+id/txtNickProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:hint="@string/hintNick"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPasswordProfile" />
 
-    <Button
-        android:id="@+id/btnActualizarProfile"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="28dp"
-        android:text="@string/Actualizar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameApelido2" />
+            <Button
+                android:id="@+id/btnVerFotoPerfil"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim40"
+                android:text="@string/btnimgProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtEmailName"
-        android:layout_width="@dimen/alturaBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="36dp"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:text="@string/hintEmail"
-        app:layout_constraintEnd_toStartOf="@+id/txtEmailProfile"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnVerFotoPerfil" />
+            <EditText
+                android:id="@+id/txtNombreProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:hint="@string/hintNombre"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNickProfile" />
 
-    <Button
-        android:id="@+id/btnVerFotoPerfil"
-        android:layout_width="@dimen/anchuraBotones"
-        android:layout_height="@dimen/alturaBotones"
-        android:layout_marginTop="40dp"
-        android:text="@string/btnimgProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/btnActualizarProfile"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim36"
+                android:text="@string/Actualizar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtApellido2Profile" />
 
-    <Switch
-        android:id="@+id/switchVerPassword"
-        android:layout_width="46dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Switch"
-        app:layout_constraintEnd_toStartOf="@+id/txtPasswordProfile"
-        app:layout_constraintHorizontal_bias="0.705"
-        app:layout_constraintStart_toEndOf="@+id/txtPasswordName"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
+            <EditText
+                android:id="@+id/txtApellido1Profile"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginTop="@dimen/dim20"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:hint="@string/hintApellido_1"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreProfile" />
+
+            <Button
+                android:id="@+id/btnBorrarProfile"
+                android:layout_width="@dimen/anchuraBotones"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim36"
+                android:backgroundTint="@color/btnBorrar"
+                android:text="@string/Borrar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnActualizarProfile" />
+
+            <EditText
+                android:id="@+id/txtPasswordProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/alturaTxt"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/ColorPrincipal"
+                android:ems="10"
+                android:hint="@string/hintPassword"
+                android:inputType="textPassword"
+                android:textColorHint="?android:attr/textColorHint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.92"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailProfile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
