@@ -19,9 +19,9 @@
 
             <TextView
                 android:id="@+id/txtTitle"
-                android:layout_width="222dp"
-                android:layout_height="94dp"
-                android:layout_marginTop="48dp"
+                android:layout_width="@dimen/anchuraTituloMain"
+                android:layout_height="@dimen/alturaTituloMain"
+                android:layout_marginTop="@dimen/dim48"
                 android:gravity="center"
                 android:text="@string/welcomeMain"
                 android:textColor="@color/white"
@@ -30,10 +30,8 @@
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="@dimen/anchuraBotones"
-                android:layout_height="58dp"
-                android:layout_marginTop="120dp"
-                android:layout_x="234dp"
-                android:layout_y="0dp"
+                android:layout_height="@dimen/alturaBotones"
+                android:layout_marginTop="@dimen/dim120"
                 android:backgroundTint="@color/ColorPrincipal"
                 android:text="@string/login" />
 
@@ -41,7 +39,7 @@
                 android:id="@+id/btnRegistrar"
                 android:layout_width="@dimen/anchuraBotones"
                 android:layout_height="@dimen/alturaBotones"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="@dimen/dim76"
                 android:backgroundTint="@color/ColorPrincipal"
                 android:text="@string/Registrar" />
         </LinearLayout>

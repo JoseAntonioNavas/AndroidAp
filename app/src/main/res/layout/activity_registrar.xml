@@ -34,7 +34,7 @@
                 android:id="@+id/txtApellido1Registrar"
                 android:layout_width="@dimen/anchuraTxt"
                 android:layout_height="@dimen/alturaTxt"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dim20"
                 android:autofillHints=""
                 android:backgroundTint="@color/ColorPrincipal"
                 android:ems="10"
