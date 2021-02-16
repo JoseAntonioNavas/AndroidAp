@@ -58,6 +58,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         listCoches = findViewById(R.id.listCochesRecycler);
+
         listCoches.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         listCoches.setLayoutManager(llm);
@@ -171,6 +172,7 @@ public class CatalogoVehiculosActivity extends AppCompatActivity {
                     txtmsgError.setVisibility(View.VISIBLE);
                 } else {
                     txtmsgError.setVisibility(View.INVISIBLE);
+
                     AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos, context, "Catalogo");
                     CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
                     adaptador.refrescar();
