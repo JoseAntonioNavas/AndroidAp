@@ -15,9 +15,11 @@ import com.nono.concesionariocoches.R;
 import java.io.IOException;
 import java.util.List;
 
+import controller.AdaptadorCoche;
 import controller.MainActivity;
 
 import model.Usuario;
+import model.Vehiculo;
 
 
 public class MainLogic {
@@ -76,7 +78,7 @@ public class MainLogic {
         builder.setTitle("");
         builder.setMessage("¿Estás seguro que deseas eliminar tu cuenta?");
 
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.btnAceptar, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
                 String id_user = logic.MainLogic.leerPreferenciasUsuario(context);
@@ -94,7 +96,7 @@ public class MainLogic {
             }
         });
 
-        builder.setNegativeButton("Cancelar", null);
+        builder.setNegativeButton(R.string.btnCancelar, null);
         AlertDialog dialog = builder.create();
         dialog.show();
 
@@ -122,11 +124,16 @@ public class MainLogic {
 
     }
 
+
+
+
     // GET coche
     public static void deleteUsuarioById(String id_user){
 
         new deleteUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/usuario/deleteById/"+id_user);
     }
+
+
 
     private static class deleteUsuario_AsyncTask extends AsyncTask<String, Void, String> {
 

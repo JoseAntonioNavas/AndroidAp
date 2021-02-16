@@ -108,9 +108,8 @@ public class RegistrarActivity extends AppCompatActivity {
                     RegistrarActivity.newDetallesUsuario((detallesUsuario) RegistrarActivity.objetosUsuario.get(1));
 
 
-
-
                 }else{
+
 
                     Toast.makeText(RegistrarActivity.context, res.get(0).getMsg(), Toast.LENGTH_LONG).show();
                 }
@@ -158,7 +157,6 @@ public class RegistrarActivity extends AppCompatActivity {
 
             try {
                 List<ResponseLogic> res = ResponseLogic.JsonToErrores(result);
-                System.out.println(res);
 
                 if (res.get(0).getMsg().equalsIgnoreCase("OK")){
 
@@ -187,4 +185,43 @@ public class RegistrarActivity extends AppCompatActivity {
     }
 
 
+
+
+
+    // PETICIONES
+    public static void deleteUsuario(String id_usuario){
+
+        new deleteUsuario_AsyncTask().execute(VariablesGlobales.url + "/api/usuario/deleteById/"+id_usuario);
+    }
+    private static class deleteUsuario_AsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String result= null;
+
+            try {
+                result =  PeticionHTTP.peticionHTTPGET(params);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result){
+
+
+        }
+
+    }
+
+
 }
+

@@ -1,7 +1,11 @@
 package controller;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -9,6 +13,7 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -29,6 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import logic.MainLogic;
 import logic.PeticionHTTP;
 import logic.VariablesGlobales;
 import logic.VehiculoLogic;
@@ -41,12 +47,14 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
     public static String nameClass;
 
 
+
     public AdaptadorCoche(ArrayList<Vehiculo> vehiculos, Context context,String nameClass) {
 
         this.vehiculos = vehiculos;
         this.context =  context;
         this.nameClass = nameClass;
     }
+
 
     @NonNull
     @Override
@@ -76,11 +84,12 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
             if(this.nameClass.equals("Catalogo")){
 
-                añadirCarrito(String.valueOf(vehiculos.get(position).getId_vehiculo()));
+                añadirCarrito(position,String.valueOf(vehiculos.get(position).getId_vehiculo()));
 
             }else{
 
-                borrarCarrito(String.valueOf(vehiculos.get(position).getId_vehiculo()),holder);
+                borrarCarrito(position,String.valueOf(vehiculos.get(position).getId_vehiculo()),holder);
+
 
             }
         });
@@ -140,16 +149,19 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
     // Añadir carrito
 
-    public static void añadirCarrito(String id_vehiculo){
+    public static void añadirCarrito(int position,String id_vehiculo){
         String id_user = logic.MainLogic.leerPreferenciasUsuario(AdaptadorCoche.context);
-        new addCarrito_AsyncTask().execute(VariablesGlobales.url + "/api/newCompraVehiculo/"+id_vehiculo+"/"+id_user);
+        new addCarrito_AsyncTask(position).execute(VariablesGlobales.url + "/api/newCompraVehiculo/"+id_vehiculo+"/"+id_user);
     }
     private static class addCarrito_AsyncTask extends AsyncTask<String, Void, String> {
+        private int position;
+        public addCarrito_AsyncTask(int position) {
+            this.position = position;
+        }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // CARGANDO...
 
         }
 
@@ -168,12 +180,22 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
         @Override
         public void onPostExecute(String result){
-
             if(result.equals("OK")){
 
-                Intent intent1 = new Intent(context,CatalogoVehiculosActivity.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent1);
+                AdaptadorCoche.vehiculos.remove(position);
+
+                if(AdaptadorCoche.vehiculos.size() == 0){
+                    CatalogoVehiculosActivity.txtmsgError.setVisibility(View.VISIBLE);
+
+                }else{
+                    CatalogoVehiculosActivity.txtmsgError.setVisibility(View.INVISIBLE);
+                }
+
+                AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>)  AdaptadorCoche.vehiculos,context,"Catalogo");
+                CatalogoVehiculosActivity.listCoches.setAdapter(adaptador);
+                adaptador.refrescar();
+
+
 
             }else{
                 Toast.makeText(LoginActivity.context, result, Toast.LENGTH_LONG).show();
@@ -186,16 +208,19 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
 
     // GET VEHICULO
-    public static void borrarCarrito(String id_vehiculo,AdaptadorCoche.HolderCoche holder){
+    public static void borrarCarrito(int position,String id_vehiculo,AdaptadorCoche.HolderCoche holder){
 
-        new deteleCarritoByIdVehiculo_AsyncTask(holder).execute(VariablesGlobales.url + "/api/compraVehiculo/deleteByIdVehiculo/"+ id_vehiculo);
+        new deteleCarritoByIdVehiculo_AsyncTask(position,holder).execute(VariablesGlobales.url + "/api/compraVehiculo/deleteByIdVehiculo/"+ id_vehiculo);
     }
     private static class deteleCarritoByIdVehiculo_AsyncTask extends AsyncTask<String, Void, String> {
 
         private AdaptadorCoche.HolderCoche holder;
-        public deteleCarritoByIdVehiculo_AsyncTask(HolderCoche holder) {
+        private int position;
+
+        public deteleCarritoByIdVehiculo_AsyncTask(int position, HolderCoche holder) {
 
             this.holder = holder;
+            this.position = position;
         }
 
         @Override
@@ -223,9 +248,17 @@ public class AdaptadorCoche extends RecyclerView.Adapter<AdaptadorCoche.HolderCo
 
             if(result.equals("OK")){
 
-                Intent intent1 = new Intent(context,cestaActivity.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent1);
+                AdaptadorCoche.vehiculos.remove(position);
+                if(AdaptadorCoche.vehiculos.size() == 0){
+                    cestaActivity.txtmsgCesta.setVisibility(View.VISIBLE);
+                }else{
+                    cestaActivity.txtmsgCesta.setVisibility(View.INVISIBLE);
+                }
+
+                AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>)  AdaptadorCoche.vehiculos,context,"Cesta");
+                cestaActivity.listCesta.setAdapter(adaptador);
+                adaptador.refrescar();
+
 
             }else{
                 Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();

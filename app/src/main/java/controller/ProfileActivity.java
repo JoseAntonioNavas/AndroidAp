@@ -217,7 +217,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.context, R.string.updateProfileSuccessful, Toast.LENGTH_LONG).show();
                 }else{
 
-                    Toast.makeText(ProfileActivity.context, result, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProfileActivity.context, response.get(0).getMsg(), Toast.LENGTH_LONG).show();
                 }
 
             } catch (JSONException e) {

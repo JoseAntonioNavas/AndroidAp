@@ -46,5 +46,6 @@
     <string name="hintPassword">Contraseña</string>
     <string name="credenciales_no_validas">Credenciales no válidas</string>
     <string name="hintIniciaSesion">Inicia Sesión</string>
-    <string name="logOutConfirm">"¿Desea "</string>
+    <string name="logOutConfirm">"¿Desea cerrar sesión?"</string>
+    <string name="deleteCartDialog">¿Seguro que desea eliminar del carrito?</string>
 </resources>

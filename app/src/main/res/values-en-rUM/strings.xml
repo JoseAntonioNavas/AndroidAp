@@ -40,4 +40,5 @@
     <string name="hintApellido_2">"Second surname "</string>
     <string name="logOutConfirm">Are you sure you want to go out?</string>
     <string name="hintIniciaSesion">Log Out</string>
+    <string name="deleteCartDialog">"Are you sure you want to remove from the cart? "</string>
 </resources>

@@ -10,11 +10,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.nono.concesionariocoches.R;
 
 import org.json.JSONException;
@@ -27,13 +25,13 @@ import logic.PeticionHTTP;
 import logic.VariablesGlobales;
 import logic.VehiculoLogic;
 import model.Vehiculo;
-import model.busquedaVehiculo;
 
 public class cestaActivity extends AppCompatActivity {
 
     private static Context context;
-    private static RecyclerView listCesta;
-    private static TextView txtmsgCesta;
+    public static RecyclerView listCesta;
+    public static TextView txtmsgCesta;
+    private static  ProgressDialog loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +46,7 @@ public class cestaActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         listCesta.setLayoutManager(llm);
         setTitle(R.string.titleCesta);
+
 
         getCesta();
 
@@ -69,10 +68,11 @@ public class cestaActivity extends AppCompatActivity {
     }
     private static class getCesta_AsyncTask extends AsyncTask<String, Void, String> {
 
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            // CARGANDO...
+
 
         }
 
@@ -92,6 +92,7 @@ public class cestaActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
 
+
             try {
                 List<Vehiculo> lstVehiculos = VehiculoLogic.JsonToVehiculo(result);
 
@@ -104,9 +105,10 @@ public class cestaActivity extends AppCompatActivity {
                     AdaptadorCoche adaptador = new AdaptadorCoche((ArrayList<Vehiculo>) lstVehiculos,context,"Cesta");
                     listCesta.setAdapter(adaptador);
                     adaptador.refrescar();
+
                 }
             } catch (JSONException e) {
-                Toast.makeText(LoginActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
+                Toast.makeText(cestaActivity.context, R.string.catchError, Toast.LENGTH_LONG).show();
             }
 
         }
