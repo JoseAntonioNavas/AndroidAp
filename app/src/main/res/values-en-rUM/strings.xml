@@ -41,4 +41,5 @@
     <string name="logOutConfirm">Are you sure you want to go out?</string>
     <string name="hintIniciaSesion">Log Out</string>
     <string name="deleteCartDialog">"Are you sure you want to remove from the cart? "</string>
+    <string name="imgBorradaExito">Image delete successfull</string>
 </resources>

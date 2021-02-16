@@ -48,4 +48,5 @@
     <string name="hintIniciaSesion">Inicia Sesión</string>
     <string name="logOutConfirm">"¿Desea cerrar sesión?"</string>
     <string name="deleteCartDialog">¿Seguro que desea eliminar del carrito?</string>
+    <string name="imgBorradaExito"> Imagen borrada con éxito</string>
 </resources>

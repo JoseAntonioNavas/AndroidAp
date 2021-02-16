@@ -196,7 +196,7 @@ public class imgProfile extends AppCompatActivity {
     // PETICIONES
     public static void deleteImagen(){
         String id_user = logic.MainLogic.leerPreferenciasUsuario(imgProfile.context);
-        new downloadImagen_AsyncTask().execute(VariablesGlobales.url + "/api/photo/DeleteImageByIdUser/"+id_user);
+        new deleteImagen_AsyncTask().execute(VariablesGlobales.url + "/api/photo/DeleteImageByIdUser/"+id_user);
     }
     private static class deleteImagen_AsyncTask extends AsyncTask<String, Void, String> {
 
@@ -222,7 +222,16 @@ public class imgProfile extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
 
-            imgFoto.setImageResource(R.drawable.notprofile);
+            if(result.equals("OK")){
+                imgFoto.setImageResource(R.drawable.notprofile);
+                Toast.makeText(imgProfile.context,R.string.imgBorradaExito ,Toast.LENGTH_LONG).show();
+
+            }else{
+
+                Toast.makeText(imgProfile.context, R.string.catchError, Toast.LENGTH_LONG).show();
+
+            }
+
 
 
         }
